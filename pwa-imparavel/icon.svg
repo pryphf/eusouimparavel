@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="114" fill="#4A7C59"/>
+  <!-- Inner subtle ring -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="rgba(216,192,138,0.2)" stroke-width="1"/>
+  <!-- Leaf/branch botanical mark -->
+  <g transform="translate(256,256)" stroke="#D8C08A" stroke-linecap="round" fill="none">
+    <!-- Main stem -->
+    <path d="M0,90 Q0,20 0,-60" stroke-width="8"/>
+    <!-- Left leaf -->
+    <path d="M0,20 Q-60,-20 -80,-70 Q-30,-60 0,20Z" fill="#D8C08A" opacity="0.85" stroke="none"/>
+    <!-- Right leaf -->
+    <path d="M0,-10 Q60,-50 75,-100 Q25,-85 0,-10Z" fill="#D8C08A" opacity="0.7" stroke="none"/>
+    <!-- Small left leaf -->
+    <path d="M0,50 Q-40,20 -50,-10 Q-20,-5 0,50Z" fill="#D8C08A" opacity="0.55" stroke="none"/>
+  </g>
+  <!-- Monogram -->
+  <text x="256" y="390" font-family="Georgia,serif" font-size="72" font-weight="400"
+        fill="#D8C08A" text-anchor="middle" letter-spacing="6" opacity="0.65">EU SOU</text>
+</svg>

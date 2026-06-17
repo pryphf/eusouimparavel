@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Imparável">
+  <meta name="theme-color" content="#4A7C59">
+  <meta name="description" content="Reprogramação Mental em 14 Etapas · Jardim da Pri Luz">
+
+  <title>Eu Sou Imparável · Jardim da Pri Luz</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+
+  <!-- Splash screen iOS (verde sálvia) -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════
+     T0 — SENHA
+════════════════════════════ -->
+<div class="screen active" id="senha-screen">
+  <div class="senha-topo"></div>
+
+  <div class="senha-marca">Jardim da Pri Luz</div>
+
+  <div class="senha-icon">🌿</div>
+
+  <h1 class="senha-titulo">Acesso ao<br>Jardim</h1>
+  <p class="senha-sub">Reprogramação Mental em 14 Dias</p>
+  <p class="senha-programa">Xô Procrastinação</p>
+
+  <div class="senha-input-wrap">
+    <input
+      class="senha-input"
+      id="senha-input"
+      type="password"
+      placeholder="sua senha"
+      autocomplete="off"
+      onkeydown="if(event.key==='Enter') verificarSenha()">
+    <button class="senha-toggle" onclick="toggleSenha()" title="Mostrar senha">👁</button>
+  </div>
+
+  <div class="senha-erro invisivel" id="senha-erro">Senha inválida. Tente novamente.</div>
+
+  <button class="senha-btn" onclick="verificarSenha()">Entrar</button>
+
+  <div class="senha-rodape">jardimdapriluz.com.br</div>
+</div>
+
+<!-- ════════════════════════════
+     T1 — BOAS-VINDAS
+════════════════════════════ -->
+<div class="screen" id="intro">
+  <div class="intro-eyebrow">Jardim da Pri Luz</div>
+  <div class="intro-mark"></div>
+
+  <div class="intro-titulo">
+    Xô
+    <strong>Procras-<br>tinação</strong>
+  </div>
+  <div class="intro-programa">Programa · 14 Dias</div>
+
+  <div class="intro-descricao">
+    Uma lição por dia.<br>Uma versão nova de você do outro lado.
+  </div>
+
+  <div class="intro-form">
+    <input class="input-nome" id="input-nome" type="text"
+           placeholder="Qual é o seu nome?" maxlength="30" autocomplete="off">
+    <button class="btn-comecar" onclick="comecar()">
+      Começar minha jornada
+    </button>
+  </div>
+
+  <div class="intro-rodape">jardimdapriluz.com.br</div>
+</div>
+
+<!-- ════════════════════════════
+     T2 — DASHBOARD
+════════════════════════════ -->
+<div class="screen" id="dashboard">
+
+  <div class="dash-topo">
+    <div class="dash-nav">
+      <div class="dash-marca">Jardim da Pri Luz</div>
+      <div class="dash-dia-label" id="dash-dia-label">Dia 0 de 14</div>
+    </div>
+    <div class="dash-saudacao" id="dash-saudacao">
+      Olá, <em id="dash-nome">—</em>
+    </div>
+    <div class="dash-subtitulo" id="dash-subtitulo">Sua jornada começa hoje.</div>
+    <div class="progress-track">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+    <div class="progress-meta">
+      <span class="progress-texto" id="prog-pct">0% concluído</span>
+      <span class="progress-texto" id="prog-restam">14 dias restantes</span>
+    </div>
+  </div>
+
+  <div class="dash-corpo">
+
+    <!-- streak -->
+    <div class="card-estado">
+      <div class="estado-icon">🌿</div>
+      <div>
+        <div class="estado-streak-num" id="streak-num">0</div>
+        <div class="estado-streak-label">dias consecutivos</div>
+      </div>
+      <div class="estado-proximo">
+        <div class="estado-proximo-label">próximo</div>
+        <div class="estado-proximo-dia" id="proximo-dia">Dia 1</div>
+      </div>
+    </div>
+
+    <!-- frase -->
+    <div class="card-frase">
+      <div class="frase-rotulo">✦ &nbsp;Frase do dia</div>
+      <div class="frase-texto-dash" id="frase-dash">"A procrastinação não rouba apenas tempo. Ela rouba versões inteiras de quem você poderia ser."</div>
+    </div>
+
+    <!-- grade -->
+    <div>
+      <div class="secao-rotulo">Seu Método · 14 Etapas</div>
+      <div class="grade-dias" id="grade-dias"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     T3 — LIÇÃO DO DIA
+════════════════════════════ -->
+<div class="screen" id="dia-screen">
+
+  <div class="dia-hero">
+    <div class="dia-num-ghost" id="dia-ghost">01</div>
+    <button class="btn-voltar" onclick="voltarDash()">← Voltar</button>
+    <div class="dia-categoria" id="dia-categoria">Dia 01 · Mentalidade</div>
+    <div class="dia-titulo-licao" id="dia-titulo">Título</div>
+    <div class="dia-frase-abertura" id="dia-abertura">frase</div>
+  </div>
+
+  <div class="dia-corpo" id="dia-corpo">
+    <!-- preenchido via JS -->
+  </div>
+
+</div>
+
+<!-- ════════════════════════════
+     T4 — CELEBRAÇÃO
+════════════════════════════ -->
+<div class="screen" id="celebracao">
+  <div class="celeb-ornamento" id="celeb-icon">✨</div>
+  <div class="celeb-titulo" id="celeb-titulo">Dia <em>1</em> completo.</div>
+  <div class="celeb-sub" id="celeb-sub">Você fez o que a maioria adia. Isso já é diferente.</div>
+  <div class="celeb-frase-box">
+    <div class="celeb-frase-txt" id="celeb-frase">"Cada passo é uma prova de que você é capaz."</div>
+  </div>
+  <button class="celeb-btn" onclick="voltarDash()">Ver meu progresso</button>
+  <button class="celeb-btn-outline" onclick="voltarDash()">Voltar ao programa</button>
+</div>
+
+<!-- ════════════════════════════
+     T5 — PROGRAMA COMPLETO
+════════════════════════════ -->
+<div class="screen" id="completo">
+  <div class="comp-coroa">🌿</div>
+  <div class="comp-titulo">Você é uma<br><em>Mulher Imparável</em>.</div>
+  <div class="comp-sub">14 dias. 14 princípios. Uma versão completamente nova construída com as suas próprias mãos.</div>
+  <div class="comp-linha"></div>
+  <div class="comp-frases">
+    <div class="comp-frase-linha">A clareza gerou ação.</div>
+    <div class="comp-frase-linha destaque">A ação gerou confiança.</div>
+    <div class="comp-frase-linha">A confiança gerou você.</div>
+  </div>
+  <button class="comp-btn-cta" onclick="abrirCTA()">Quero ir mais fundo →</button>
+  <button class="comp-btn-rec" onclick="reiniciar()">Recomeçar o programa</button>
+  <div class="comp-url">jardimdapriluz.com.br</div>
+</div>
+
+<!-- ════════════════════════════
+     JAVASCRIPT
+════════════════════════════ -->
+
+<!-- ── PWA Install Banner ───────────────────────── -->
+<div id="pwa-banner" class="pwa-banner pwa-hidden">
+  <div class="pwa-banner-content">
+    <span class="pwa-banner-icon">🌿</span>
+    <div class="pwa-banner-txt">
+      <strong>Adicionar à tela inicial</strong>
+      <span>Acesse como um app, sem abrir o navegador</span>
+    </div>
+    <button class="pwa-banner-btn" onclick="instalarPWA()">Instalar</button>
+    <button class="pwa-banner-close" onclick="this.parentElement.parentElement.classList.add('pwa-hidden')">✕</button>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="/script.js"></script>
+
+</body>
+</html>
